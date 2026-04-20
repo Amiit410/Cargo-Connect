@@ -18,12 +18,12 @@ namespace CargoConnect.Domain.Entities
         [Required]
         [ForeignKey("User")]
         public Guid UserId { get; set; }
-        public UserEntity User { get; set; }
+        public UserEntity? User { get; set; }
 
         [Required]
         [ForeignKey("Driver")]
         public Guid DriverId { get; set; }
-        public DriverEntity Driver { get; set; }
+        public DriverEntity? Driver { get; set; }
 
         [Required]
         [Column(TypeName ="varchar(255)")]
