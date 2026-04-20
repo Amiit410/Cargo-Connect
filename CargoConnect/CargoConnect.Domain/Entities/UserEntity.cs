@@ -10,7 +10,6 @@ using CargoConnect.Common.Enums;
 
 namespace CargoConnect.Domain.Entities
 {
-    //
     public class UserEntity
     {
         [Key]
