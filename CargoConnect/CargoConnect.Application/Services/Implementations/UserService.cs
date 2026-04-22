@@ -22,30 +22,34 @@ namespace CargoConnect.Application.Services.Implementations
             _userRepository = userRepository;
         }
 
-        public Task<bool> CreateAsync(UserCreateDTO userreateDto)
+        public async Task<bool> CreateAsync(UserCreateDTO userreateDto)
         {
-            throw new NotImplementedException();
+            bool status = await _userRepository.CreateAsync(_mapper.Map<UserCreateDTO, UserEntity>(userreateDto));
+            return status;
         }
 
-        public Task<bool> DeleteAsync(Guid id)
+        public async Task<bool> DeleteAsync(Guid id)
         {
-            throw new NotImplementedException();
+            bool status = await _userRepository.DeleteAsync(id);
+            return status;
         }
 
         public async Task<List<UserViewDTO>> GetAllAsync()
         {
-            var users = _mapper.Map<List<UserEntity>, List<UserViewDTO>>(await _userRepository.GetAllAsync());
+            var users = _mapper.MapList<UserEntity,UserViewDTO>(await _userRepository.GetAllAsync());
             return users;
         }
 
-        public Task<UserViewDTO> GetByIdAsync(Guid id)
+        public async Task<UserViewDTO> GetByIdAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var user = _mapper.Map<UserEntity, UserViewDTO>(await _userRepository.GetByIdAsync(id));
+            return user;
         }
 
-        public Task<bool> UpdateAsync(UserUpdateDTO userUpdateDto)
+        public async Task<bool> UpdateAsync(UserUpdateDTO userUpdateDto)
         {
-            throw new NotImplementedException();
+            bool status = await _userRepository.UpdateAsync(_mapper.Map<UserUpdateDTO, UserEntity>(userUpdateDto));
+            return status;
         }
     }
 }
