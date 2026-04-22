@@ -10,19 +10,22 @@ namespace CargoConnect.Application.DTOs.Payment
 {
     public class PaymentCreateDTO
     {
-        [Required]
-        public Guid BookingId { get; set; }
+        [Required(ErrorMessage = "BookingId is required")]
+        public Guid BookingId { get; set; } 
 
-        [Required]
+        [Required(ErrorMessage = "Amount is required")]
+        [Range(1, 1000000, ErrorMessage = "Amount must be greater than 0")]
         public decimal Amount { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Status is required")]
+        [EnumDataType(typeof(PaymentStatus), ErrorMessage = "Invalid payment status")]
         public PaymentStatus Status { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Payment method is required")]
+        [EnumDataType(typeof(PaymentMethod), ErrorMessage = "Invalid payment method")]
         public PaymentMethod PaymentMethod { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "TransactionId is required")]
         public Guid TransactionId { get; set; }
     }
 }
