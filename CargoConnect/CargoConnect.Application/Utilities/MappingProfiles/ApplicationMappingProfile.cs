@@ -9,7 +9,7 @@ using CargoConnect.Application.DTOs.Transaction;
 using CargoConnect.Application.DTOs.Vehical;
 using CargoConnect.Domain.Entities;
 
-namespace CargoConnect.Application.Utilities
+namespace CargoConnect.Application.Utilities.MappingProfiles
 {
     public class ApplicationMappingProfile : Profile
     {

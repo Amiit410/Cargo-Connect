@@ -1,5 +1,5 @@
 using CargoConnect.Application.Infrastructure.RegisterServices;
-using CargoConnect.Application.Utilities;
+using CargoConnect.Application.Utilities.MappingProfiles;
 
 var builder = WebApplication.CreateBuilder(args);
 
