@@ -16,14 +16,16 @@ namespace CargoConnect.API.Controllers
             _bookingService = bookingService;
         }
 
-        [HttpGet("Get-Bookings")]
+        //GET: api/bookings
+        [HttpGet]
         public async Task<IActionResult> Get()
         {
             var bookings = await _bookingService.GetAllAsync();
             return Ok(bookings);
         }
 
-        [HttpGet("Get-Booking-By-{id}")]
+        //GET :api/bookings/{id}
+        [HttpGet("{id}")]
         public async Task<IActionResult> Details(Guid id)
         {
             var booking = await _bookingService.GetByIdAsync(id);
@@ -32,7 +34,9 @@ namespace CargoConnect.API.Controllers
             return Ok(booking);
         }
 
-         [HttpPost("Create-Booking")]
+
+        //POST : api/bookings
+        [HttpPost]
          public async Task<IActionResult> Create([FromBody] BookingCreateDTO bookingCreateDto)
             {
             if (ModelState.IsValid)
@@ -44,7 +48,8 @@ namespace CargoConnect.API.Controllers
             return BadRequest(ModelState);
         }
 
-            [HttpPut("Update-Booking")]
+        //PUT : api/bookings
+        [HttpPut]
             public async Task<IActionResult> Update([FromBody] BookingUpdateDTO bookingUpdateDto)
             {
                 if (ModelState.IsValid)
@@ -57,8 +62,9 @@ namespace CargoConnect.API.Controllers
     
                 return BadRequest(ModelState);
             }
-    
-            [HttpDelete("Delete-Booking-By-{id}")]
+
+        //DELETE : api/bookings/{id}
+        [HttpDelete("{id}")]
             public async Task<IActionResult> Delete(Guid id)
             {
                 var result = await _bookingService.DeleteAsync(id);
