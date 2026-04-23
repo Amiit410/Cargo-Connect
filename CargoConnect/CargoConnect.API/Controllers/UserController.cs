@@ -21,7 +21,7 @@ namespace CargoConnect.API.Controllers
         {
             var users = await _userService.GetAllAsync();
             if (users != null)
-                return Ok(User);
+                return Ok(users);
 
             return NotFound();
         }
