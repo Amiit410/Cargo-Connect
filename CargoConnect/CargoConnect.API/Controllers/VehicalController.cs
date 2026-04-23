@@ -8,7 +8,7 @@ namespace CargoConnect.API.Controllers
     [Route("Api/[controller]")]
     public class VehicalController : ControllerBase
     {
-        IVehicalService _vehicalsService;
+        private readonly IVehicalService _vehicalsService;
 
         public VehicalController(IVehicalService vehicalsService)
         {

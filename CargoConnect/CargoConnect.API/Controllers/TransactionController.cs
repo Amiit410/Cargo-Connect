@@ -9,13 +9,13 @@ namespace CargoConnect.API.Controllers
     [ApiController]
     public class TransactionController : ControllerBase
     {
-        ITransactionService _transactionService;
+        private readonly ITransactionService _transactionService;
         public TransactionController(ITransactionService transactionService)
         {
             _transactionService = transactionService;
         }
 
-        //GET: api/Transactions
+        //GET: api/transactions
         [HttpGet()]
         public async Task<IActionResult> GetAll()
         {
@@ -23,7 +23,7 @@ namespace CargoConnect.API.Controllers
             return Ok(transactions);
         }
 
-        //GET: api/Transactions/{id}
+        //GET: api/transactions/{id}
         [HttpGet("{id}")]
         public async Task<IActionResult> Details(Guid id)
         {
@@ -33,7 +33,7 @@ namespace CargoConnect.API.Controllers
             return Ok(transaction);
         }
 
-        //POST: api/Transactions
+        //POST: api/transactions
         [HttpPost()]
         public async Task<IActionResult> Create([FromBody]TransactionCreateDTO transactionCreateDto)
         {
