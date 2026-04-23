@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CargoConnect.API.Controllers
 {
     [ApiController]
-    [Route("api/users")] // Clean REST route
+    [Route("api/users")]
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
