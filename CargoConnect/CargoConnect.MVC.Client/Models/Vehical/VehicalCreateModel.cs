@@ -1,0 +1,40 @@
+﻿using CargoConnect.Common.Enums;
+using System.ComponentModel.DataAnnotations;
+
+namespace CargoConnect.MVC.Client.Models.Vehical
+{
+    public class VehicalCreateModel
+    {
+
+        [Required(ErrorMessage = "DriverId is required")]
+        public Guid DriverId { get; set; }
+
+        [Required(ErrorMessage = "Vehicle type is required")]
+        [EnumDataType(typeof(VehicalType), ErrorMessage = "Invalid vehicle type")]
+        public VehicalType Type { get; set; }
+
+        [Required(ErrorMessage = "Number plate is required")]
+        [MinLength(5, ErrorMessage = "Number plate must be at least 5 characters")]
+        [MaxLength(15, ErrorMessage = "Number plate cannot exceed 15 characters")]
+        [RegularExpression("^[A-Z]{2}[ -]?[0-9]{2}[ -]?[A-Z]{1,2}[ -]?[0-9]{4}$", ErrorMessage = "Invalid license number format")]
+        public string NumberPlate { get; set; } = string.Empty;
+
+        [Required]
+        [Range(0.1, 100, ErrorMessage = "Length must be greater than 0")]
+        public double Length { get; set; }
+
+        [Required]
+        [Range(0.1, 100, ErrorMessage = "Width must be greater than 0")]
+        public double Width { get; set; }
+
+        [Required]
+        [Range(0.1, 100, ErrorMessage = "Height must be greater than 0")]
+        public double Height { get; set; }
+
+        [Required]
+        [Range(1, 100000, ErrorMessage = "Load capacity must be greater than 0")]
+        public double LoadCapacity { get; set; }
+    }
+}
+
+
