@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CargoConnect.Application.Interfaces;
 using CargoConnect.Application.Interfaces.ExternalServices;
 using CargoConnect.Application.Interfaces.Repositories;
 using CargoConnect.Application.Interfaces.Services;
@@ -33,6 +34,9 @@ namespace CargoConnect.Application.DependencyInjection
 
             //Booking Services
             services.AddScoped<IBookingService, BookingService>();
+
+            //Tracking Services
+            services.AddScoped<ITrackingService, TrackingService>();
 
             //auth service
             services.AddScoped<IAuthService, AuthService>();
